@@ -1,0 +1,33 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    {{ title }}!
+  </h1>  
+</div>
+
+<nav>
+    <a [routerLink]="['/principal']" [routerLinkActive]="['activado']">
+        Home
+    </a>
+    -
+    <a  [routerLink]="['/empleado']"  [routerLinkActive]="['activado']">
+        Empleado
+    </a>
+    -
+    <a  [routerLink]="['/contacto']"  [routerLinkActive]="['activado']">
+        Contacto
+    </a>
+    -
+    <a  [routerLink]="['/cuenta']"  [routerLinkActive]="['activado']">
+        Cuenta
+    </a>
+    -
+    <a  [routerLink]="['/plantilla']"  [routerLinkActive]="['activado']">
+        Plantillas
+    </a>
+
+</nav>
+<hr>
+<!-- <app-empleado></app-empleado> -->
+<router-outlet></router-outlet>
+

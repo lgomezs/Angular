@@ -1,0 +1,84 @@
+
+<h2>Ejemplo de Formularios</h2>
+<hr/>
+<style>
+
+div{
+  float: left;
+}
+form{
+  width: 100%;
+}
+form1{
+  width: 100%;
+}
+imput[type="text"],span{
+  display:block;
+  width: 100%;
+}
+listado{
+  margin-left: 50px;
+}
+</style>
+
+<div>
+    <h3>Componente de cuenta !</h3>
+    <form #formCuenta="ngForm" (ngSubmit)="onSubmit(); formCuenta.reset()"  >
+      <p>
+          <label>Cuenta</label>
+          <input type="text" name="numero" #numero="ngModel" [(ngModel)]="_cuenta.numero" required>
+          <span *ngIf="numero.touched && !numero.valid">
+            Numero de cuenta no valido!!
+          </span>
+      </p>    
+      <p>
+        <label>Saldo</label>
+        <input type="text" name="saldo" #saldo="ngModel" [(ngModel)]="_cuenta.saldo" required pattern="[0-9]+">
+          <span *ngIf="saldo.touched && !saldo.valid">
+            Monto no valido!!
+          </span>
+      </p>
+      <p>
+        <label>Moneda</label>
+        <input type="text" name="moneda" #moneda="ngModel" [(ngModel)]="_cuenta.moneda" required>
+          <span *ngIf="moneda.touched && !moneda.valid">
+            Moneda no valida!!
+          </span>
+      </p>
+      <p>
+        <label>Estado</label>
+        <input type="text" name="estado" #estado="ngModel" [(ngModel)]="_cuenta.estado" maxlength="1" required pattern="[A,I]">
+        <span *ngIf="estado.touched && !estado.valid">
+            Estado no valido!!
+          </span>
+
+      </p>
+        <input type="submit" value="Guardar" [disabled]="!formCuenta.form.valid">
+    </form>
+</div>
+
+<div class="listado">
+  <h4>Listado de cuentas</h4>
+  <ul>
+    <li *ngFor="let cuenta of cuentas">
+        {{cuenta.numero}}
+        {{cuenta.saldo}}
+        {{cuenta.moneda}}
+        {{cuenta.estado}}
+    </li>
+  </ul>
+</div>
+
+<div class="listado">
+  <h2> call api REST (GET, POST)</h2>
+  <h4>Listado de posts</h4>
+  <ul *ngIf="articulos">
+    <li *ngFor="let articulo of articulos">
+        {{articulo.userId}}  - 
+        {{articulo.id}}     - 
+        {{articulo.title}}   - 
+        {{articulo.body}}   - 
+    </li>
+  </ul>
+  <span *ngIf="!articulos">Cargando listado....</span>
+</div>

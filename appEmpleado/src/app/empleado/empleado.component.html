@@ -1,0 +1,67 @@
+
+  <h1 style="color: blue;"> 
+    {{title}}! 
+  </h1>
+
+  <hr>
+  <hr>
+  <h3>Listado de empleados, uso directiva *ngIf </h3>
+
+  <div *ngIf="trabajadorExterno == false">
+     <button (click)="cambiarEmpleadoExterno(true)">Mostrar Empleado</button>
+     <ul>
+          <li> <b>Empleado :</b> </li>
+              {{empleado.nombre_empleado}}  {{empleado.apellido_empleado}} <br> 
+          <li> <b>DNI :</b> </li>      
+              {{empleado.dni}} <br>
+          <li> <b>Direccion :</b> </li> 
+                {{empleado.direcciones}}
+          <li *ngIf="empleado.contratado ==true"> Contratado  </li> 
+          <li *ngIf="empleado.contratado ==false"> No esta Contratado  </li> 
+      </ul>
+  </div>
+
+  <div  *ngIf="trabajadorExterno == true">
+      <button (click)="cambiarEmpleadoExterno(false)">Mostrar array de empleado</button>
+      <ul>
+          <li> <b>Empleado :</b> </li>
+               {{empleadores[0].nombre_empleado}}  {{empleadores[0].apellido_empleado}} <br> 
+          <li> <b>DNI :</b> </li>      
+               {{empleadores[0].dni}} <br>
+          <li> <b>Direccion :</b> </li> 
+                {{empleadores[0].direcciones}}
+          <li *ngIf = "empleadores[0].contratado == true"> Contratado</li> 
+          <li *ngIf = "empleadores[0].contratado == false"> No esta contratado</li> 
+      </ul>
+  </div>
+
+  <hr>
+  <h3>Listado de empleados, uso directiva *ngFor </h3>
+
+  <ul>
+    <li *ngFor="let empleado of empleadores; let i = index">
+       <strong>Empleado {{i +1}} : </strong> 
+        <ul>
+            <li> Empleado : </li>      {{empleado.nombre_empleado}}  {{empleado.apellido_empleado}} 
+            <li> DNI :</li>           {{empleado.dni}} 
+            <li> Direccion : </li>     {{empleado.direcciones}}
+            <li *ngIf = "empleado.contratado == true"> Contratado</li> 
+            <li *ngIf = "empleado.contratado == false"> No esta contratado</li> 
+        </ul>
+    </li>
+  </ul>
+
+  <hr>
+
+  <h3>Selector de colores, uso de ngModel</h3>
+  <input type="text" [(ngModel)]="color_seleccionado"/>
+  <pre>
+    Color seleccionado :  {{color_seleccionado}}
+  </pre> 
+  <div [ngStyle]="{
+      'background': color_seleccionado,
+      'width' : '200px',
+      'height': '200px',
+      'float' : 'right',
+      'margin-right' : '70%'
+    }"></div>

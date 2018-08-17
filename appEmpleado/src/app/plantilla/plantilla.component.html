@@ -1,0 +1,25 @@
+<p>
+  Componente plantilla !
+</p>
+
+<hr>
+<h2>Trabajar con NgTemplate...</h2>
+
+<!-- condicionales -->
+<div *ngIf="esAdministrador; then admin else noAdmin">   
+</div>
+
+<ng-template #admin>
+    <button (click)="cambiar(false)">Cambiar</button>
+    <strong style="background: ivory">Eres el administrador</strong>
+</ng-template>
+
+<ng-template #noAdmin>
+        <button (click)="cambiar(true)">Cambiar</button>
+        <strong style="background: red">No eres el administrador</strong>   
+</ng-template>
+
+
+
+
+

@@ -1,0 +1,42 @@
+<h2>{{title}}</h2>
+
+<hr>
+<h2>call services</h2>
+
+<div *ngIf="parametros">
+    Parametro de la URL : {{parametros}}
+
+    <hr>
+
+    <input type="text" [(ngModel)]="prenda_guardar">
+    <button (click)="agregarContacto()">Añadir Contacto</button>
+    <br/> <br/>
+    <p *ngIf="prenda_guardar">Contacto a guardar: {{prenda_guardar}}</p>
+
+    <br/> <br/>
+    <strong>Lista de Contacto:</strong> 
+    <ul >
+        <li *ngFor="let contacto of listado_contacto; let i = index ">
+            {{contacto}}
+            <button (click)="eliminarPrenda(i)">Eliminar</button>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="!parametros">
+        <button (click)="redirigir()"> Ir a pagina de contacto</button>
+</div>
+
+<hr>
+<h2>Pipes - fechas</h2>
+
+<p>Today is {{fecha | date}}</p>
+<p>Or if you prefer, {{fecha | date:'fullDate' | uppercase}} </p>
+<p>The time is {{fecha | date:'h:mm a z' | lowercase}}</p>
+{{fecha| date: 'shortDate'}}
+<br/>
+{{fecha| date: 'dd/MM/yy'}}
+
+<h2>Conversor personalizado</h2>
+
+{{5 | conversor: 3}}
