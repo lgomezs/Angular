@@ -1,0 +1,34 @@
+<h3>{{titulo}}</h3>
+<hr>
+
+<form #formContacto="ngForm" (ngSubmit)="saveContact(); formContacto.reset()" class="col-lg-6" id="form-contacto">
+
+	<label>
+		FirstName
+		<span *ngIf="!firstName.valid && firstName.touched" class="label label-danger">FirstName is required</span>
+	</label>
+	<input type="text" #firstName="ngModel" name="firstName" [(ngModel)]="_contact.firstName" class="form-control" required />
+
+	<label>
+		LastName
+		<span *ngIf="!lastName.valid && lastName.touched" class="label label-danger">LastName is required</span>
+	</label>
+	<input type="text" #lastName="ngModel" name="lastName" [(ngModel)]="_contact.lastName" class="form-control" required />
+
+	<label>
+		Email
+		 <span *ngIf="!email.valid && email.touched" class="label label-danger">Email incorrect</span> 
+	</label>
+	<input type="text" #email="ngModel" name="email" [(ngModel)]="_contact.email" class="form-control" 
+			required  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
+
+  <label>
+		Phone:
+		<span *ngIf="!fono.valid && fono.touched" class="label label-danger">Email incorrect</span>
+	</label>
+	<input type="text" #fono="ngModel" name="fono" [(ngModel)]="_contact.fono" class="form-control" required pattern="[0-9]+"/>
+
+	<br/>
+	<input type="submit" value="{{titulo}}" [disabled]="!formContacto.form.valid" class="btn btn-success"/>
+</form>
+

@@ -1,0 +1,27 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="content" class="col-lg-10 col-lg-offset-1">
+
+    <!--header-->
+    <header id="header" class="col-lg-12" [style.background]="header_color">
+      <h1>{{title}}</h1>
+    </header>
+
+    <!--menu de navegacion-->
+    <nav id="nav" class="col-lg-12">
+      <ul>
+        <li><a [routerLink]="['/home']" [routerLinkActive]="['activado']" >Home</a></li>
+        <li><a [routerLink]="['/contact']" [routerLinkActive]="['activado']">Contact</a> </li>
+        <li><a [routerLink]="['/createContact']" [routerLinkActive]="['activado']">Create Contact</a> </li>
+      </ul>
+    </nav>
+    
+    <section id="main" class="col-lg-12">
+        <!--componente actual-->
+        <router-outlet></router-outlet>
+    </section>
+
+    <footer id="footer" class="col-lg-12">
+      <p>Aplicacion con angular - lmgomez.saavedra@gmail.com</p>
+    </footer>
+
+</div>
