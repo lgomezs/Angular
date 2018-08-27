@@ -15,7 +15,7 @@ export class ContactoComponent implements OnInit {
 
   public titulo:string;
   public array_contacto:Contacto[];
- 
+  public confirmado;
 
   constructor(
     private _route: ActivatedRoute,
@@ -25,16 +25,41 @@ export class ContactoComponent implements OnInit {
      this.titulo="Contact List";
    }
 
+
   ngOnInit() {   
+    this.loadListContact();
+  }
+
+  loadListContact(){
     this._contactoService.getContact().subscribe(
-        result =>{
-            if(result.code!=200){
-              console.log("data ok es : " + result);
-              this.array_contacto=result;             
-            }          
+      result =>{
+          if(result.code!=200){
+            console.log("data ok es : " + result);
+            this.array_contacto=result;             
+          }          
+      },
+      error=>{
+          console.log("error obtenido :: " + <any>error);
+      }
+  );
+  }
+
+  deleteContact(id:string){
+    this.confirmado=id;    
+  }
+
+  cancelarConfirm(){
+    this.confirmado=null;    
+  }
+
+  onDeleteContactConfirm(id:string){
+    this._contactoService.deleteContact(id).subscribe(
+        result => {
+          this.loadListContact();
+          console.log("contacto eliminado");
         },
-        error=>{
-            console.log("error obtenido :: " + <any>error);
+        error => {
+          console.log("error deleteContact :: " + <any>error);
         }
     );
   }

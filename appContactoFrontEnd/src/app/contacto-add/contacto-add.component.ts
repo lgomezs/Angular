@@ -22,6 +22,7 @@ export class ContactoAddComponent implements OnInit {
     private _router: Router,
     private _contactoService: ContactoService
   ) { 
+
     this.titulo="Create Contact";
     this._contact = new Contacto();
   }
@@ -41,4 +42,6 @@ export class ContactoAddComponent implements OnInit {
         }
       );      
   }
+
+  
 }

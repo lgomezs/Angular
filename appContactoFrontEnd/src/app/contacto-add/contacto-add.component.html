@@ -11,9 +11,9 @@
 
 	<label>
 		LastName
-		<span *ngIf="!lastName.valid && lastName.touched" class="label label-danger">LastName is required</span>
+		<span *ngIf="!lastname.valid && lastname.touched" class="label label-danger">LastName is required</span>
 	</label>
-	<input type="text" #lastName="ngModel" name="lastName" [(ngModel)]="_contact.lastName" class="form-control" required />
+	<input type="text" #lastname="ngModel" name="lastname" [(ngModel)]="_contact.lastname" class="form-control" required />
 
 	<label>
 		Email
@@ -22,13 +22,14 @@
 	<input type="text" #email="ngModel" name="email" [(ngModel)]="_contact.email" class="form-control" 
 			required  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
 
-  <label>
+    <label>
 		Phone:
 		<span *ngIf="!fono.valid && fono.touched" class="label label-danger">Email incorrect</span>
 	</label>
 	<input type="text" #fono="ngModel" name="fono" [(ngModel)]="_contact.fono" class="form-control" required pattern="[0-9]+"/>
 
 	<br/>
+
 	<input type="submit" value="{{titulo}}" [disabled]="!formContacto.form.valid" class="btn btn-success"/>
 </form>
 

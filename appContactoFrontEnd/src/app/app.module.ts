@@ -11,6 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { ContactoAddComponent } from './contacto-add/contacto-add.component'
 import {DataTableModule} from "angular-6-datatable";
+import { ContactoDetailComponent } from './contacto-detail/contacto-detail.component';
+import { ContactoEditComponent } from './contacto-add/contacto-edit.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import {DataTableModule} from "angular-6-datatable";
     ContactoComponent,    
     HomeComponent, 
     ErrorComponent, 
-    ContactoAddComponent    
+    ContactoAddComponent, 
+    ContactoDetailComponent  ,
+    ContactoEditComponent 
   ],
   imports: [
     BrowserModule,

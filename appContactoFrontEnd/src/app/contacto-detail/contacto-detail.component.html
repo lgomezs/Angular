@@ -1,0 +1,13 @@
+<h2>{{titulo}}</h2>
+
+<div *ngIf="!_contacto">
+	<p>Loading Contacts...</p>
+</div>
+<div class="row" *ngIf="_contacto">	
+	<div class="col-lg-8">
+		<p>{{_contacto.firstName}}</p>
+		<p>{{_contacto.lastname}}</p>
+        <p>{{_contacto.email}}</p>
+        <p>{{_contacto.fono}}</p>
+	</div>
+</div>
