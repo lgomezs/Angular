@@ -4,14 +4,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { GraficasComponent } from './graficas/graficas.component';
 import { PagesComponent } from './pages.component';
+import { AccoutSettingComponent } from './accout-setting/accout-setting.component';
 
 const appRoutes:Routes = [
-    { path:'', 
-        component: PagesComponent,
+    { path:'', component: PagesComponent,
         children : [
             { path:'dashboard', component: DashboardComponent},  
             { path:'progress', component: ProgressComponent},   
-            { path:'graficas', component: GraficasComponent},   
+            { path:'graficas', component: GraficasComponent},
+            { path:'accoutSettings', component: AccoutSettingComponent},      
             { path:'' ,redirectTo:'/dashboard' ,pathMatch: 'full'}
         ]    
     }   
