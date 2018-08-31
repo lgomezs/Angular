@@ -11,9 +11,8 @@ const appRoutes:Routes = [
         children : [
             { path:'dashboard', component: DashboardComponent},  
             { path:'progress', component: ProgressComponent},   
-            { path:'graficas', component: GraficasComponent},
-            { path:'accoutSettings', component: AccoutSettingComponent},      
-            { path:'' ,redirectTo:'/dashboard' ,pathMatch: 'full'}
+            { path:'graficas', component: GraficasComponent} ,
+            { path:'accountSetting', component: AccoutSettingComponent}           
         ]    
     }   
 ];
