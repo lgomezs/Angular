@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.component';
 import { AccoutSettingComponent } from './accout-setting/accout-setting.component';
+import { PromesasComponent } from './promesas/promesas.component';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { AccoutSettingComponent } from './accout-setting/accout-setting.componen
         IncrementadorComponent,
         GraficoDonaComponent,
         AccoutSettingComponent,
+        PromesasComponent,
        
     ],  
     exports:[
