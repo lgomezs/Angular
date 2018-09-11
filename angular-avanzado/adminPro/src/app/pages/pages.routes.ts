@@ -7,6 +7,10 @@ import { PagesComponent } from './pages.component';
 import { AccoutSettingComponent } from './accout-setting/accout-setting.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { LoginGuard } from '../services/service.index';
+import { ProfileComponent } from './profile/profile.component';
+import { UsuarioComponent } from './usuario/usuario.component';
+import { HospitalesComponent } from './hospitales/hospitales.component';
+import { MedicosComponent } from './medicos/medicos.component';
 
 const appRoutes:Routes = [
     { path:'', 
@@ -18,6 +22,11 @@ const appRoutes:Routes = [
             { path:'graficas', component: GraficasComponent,data:{titulo: 'grafica'}} ,
             { path:'accountSetting', component: AccoutSettingComponent,data:{titulo: 'Account Service'}}  ,
             { path:'promesas', component: PromesasComponent,data:{titulo: 'promesas'}} ,
+            { path:'perfil', component: ProfileComponent,data:{titulo: 'Perfil de usuario'}} ,
+              // Mantenimientos
+            { path: 'usuarios', component: UsuarioComponent, data: { titulo: 'Mantenimiento de Usuarios' } },
+            { path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Mantenimiento de Hospitales' } },
+            { path: 'medicos', component: MedicosComponent, data: { titulo: 'Mantenimiento de Medicos' } },
             { path: '', redirectTo: '/dashboard', pathMatch: 'full' }            
         ]    
     }   

@@ -7,8 +7,10 @@ import {
     SharedService,
     SidebarService,
     UsuarioService,
-    LoginGuard
+    LoginGuard    
   } from './service.index';
+
+import { ModalUploadService } from '../components/modal-upload/modal-upload.service';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import {
     SharedService,
     SidebarService,
     UsuarioService,
-    LoginGuard
+    LoginGuard,
+    ModalUploadService
   ],
   declarations: []
 })

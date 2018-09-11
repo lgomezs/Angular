@@ -60,7 +60,9 @@ export class LoginComponent implements OnInit {
           scope: 'profile email '
         });
 
-        this.attachSign(document.getElementById('btnGoogle'));
+        this.attachSign( document.getElementById('btnGoogle') );
+
+       // this.attachSign(document.getElementById('btnGoogle'));
     });
   }
   
@@ -72,7 +74,7 @@ export class LoginComponent implements OnInit {
          
           this._usuarioService.loginGoogle(token).subscribe(
             reult=>{
-                this._router.navigate(['/dashboard']);
+              window.location.href = '#/dashboard';
             }
           );
     });

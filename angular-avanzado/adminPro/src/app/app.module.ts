@@ -13,17 +13,19 @@ import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component
 import { APP_ROUTES } from './app.route';
 import { PagesComponent } from './pages/pages.component';
 import { RegisterComponent } from './login/register.component';
-import { PageModule } from './pages/page.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { ServiceModule } from './services/service.module';
 
+
+//modules
+import { PageModule } from './pages/page.module';
+import { ServiceModule } from './services/service.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NopagefoundComponent,        
-    RegisterComponent    
+    RegisterComponent        
   ],
   imports: [
     BrowserModule,
