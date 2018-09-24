@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/Usuario';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { URL_SERVICES } from '../../config/config';
 import {Observable} from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -57,8 +57,8 @@ export class UsuarioService {
   actualizarUsuario(usuario:Usuario){
     let url = URL_SERVICES + 'usuario/' + usuario._id;
     url += '?token=' + this.token;
-
-    return this._http.put( url, usuario ).pipe(
+ 
+    return this._http.put( url, usuario).pipe(
                 map( (resp: any) => {
 
                   if ( usuario._id === this.usuario._id ) {

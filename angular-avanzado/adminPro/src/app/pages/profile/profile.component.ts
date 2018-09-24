@@ -39,7 +39,6 @@ export class ProfileComponent implements OnInit {
       let usuario = new Usuario(form.value.nombre,correo,this.usuario.password,this.usuario.img,
                  this.usuario.role,this.usuario.google,this.usuario._id);
 
-
       this._usuarioService.actualizarUsuario(usuario).subscribe();
 
     }

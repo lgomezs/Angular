@@ -55,10 +55,11 @@ export class HospitalService {
     );
   }
 
-  crearHosiptal(hospital:Hospital){
-    let URL= URL_SERVICES+'hospital/';
+  crearHosiptal(nombre:string){
+    let URL= URL_SERVICES+'hospital';
     URL+='?token='+this.token;
-    return this._http.post(URL,hospital).pipe(
+    console.log(nombre);
+    return this._http.post(URL,{ nombre }).pipe(
       map(resultado=> {         
            resultado;
       })

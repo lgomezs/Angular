@@ -101,9 +101,30 @@ export class HospitalesComponent implements OnInit {
 
   }
 
-  mostrarModal( id: string ) {
-    this._modalUploadService.mostrarModal( 'hospitales', id );
+  mostrarModal( hospital: Hospital ) {
+    this._modalUploadService.mostrarModal( 'hospitales', hospital._id );
   }
 
-  
+  crearHospital() {
+
+    swal({
+      title: 'Crear hospital',
+      text: 'Ingrese el nombre del hospital',
+      content: 'input',
+      icon: 'info',
+      buttons: true,
+      dangerMode: true
+    }).then( (valor: string ) => {
+
+      if ( !valor || valor.length === 0 ) {
+        return;
+      }
+
+      this._hospitalService.crearHosiptal( valor )
+              .subscribe( () => this.cargarHospital() );
+
+    });
+
+  }
+
 }

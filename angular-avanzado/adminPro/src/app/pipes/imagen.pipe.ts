@@ -11,6 +11,8 @@ export class ImagenPipe implements PipeTransform {
     if (!nombre) {
       return URL + '/usuarios/XXX';   
     }
+
+    console.log("tipo " + tipo);
   
     if (nombre.indexOf('https') >= 0) {
       return nombre;
@@ -24,7 +26,7 @@ export class ImagenPipe implements PipeTransform {
           URL +=  'medicos/' + nombre;
           break;
 
-        case 'hospitales':
+        case 'hospital':
           URL +=  'hospitales/' + nombre;
           break;
 
@@ -33,7 +35,7 @@ export class ImagenPipe implements PipeTransform {
           break;
       }
 
-      console.log("URL "+ URL);
+      console.log("URL peticion::  "+ URL);
       return URL;
     }
   }
