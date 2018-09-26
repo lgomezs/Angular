@@ -11,6 +11,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { HospitalesComponent } from './hospitales/hospitales.component';
 import { MedicosComponent } from './medicos/medicos.component';
+import { MedicoComponent } from './medicos/medico.component';
 
 const appRoutes:Routes = [
     { path:'', 
@@ -27,6 +28,7 @@ const appRoutes:Routes = [
             { path: 'usuarios', component: UsuarioComponent, data: { titulo: 'Mantenimiento de Usuarios' } },
             { path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Mantenimiento de Hospitales' } },
             { path: 'medicos', component: MedicosComponent, data: { titulo: 'Mantenimiento de Medicos' } },
+            { path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Actualizacion de Medico' } },
             { path: '', redirectTo: '/dashboard', pathMatch: 'full' }            
         ]    
     }   

@@ -22,6 +22,7 @@ import { HospitalesComponent } from './hospitales/hospitales.component';
 import { MedicosComponent } from './medicos/medicos.component';
 import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 import { CommonModule } from '@angular/common';
+import { MedicoComponent } from './medicos/medico/medico.component';
 
 
 
@@ -39,7 +40,9 @@ import { CommonModule } from '@angular/common';
         UsuarioComponent,
         HospitalesComponent,
         MedicosComponent,
-        ModalUploadComponent       
+        ModalUploadComponent,
+        MedicoComponent
+               
     ],  
     exports:[
         DashboardComponent,
