@@ -21,7 +21,6 @@ export class HospitalService {
     public _subirArchiveService: SubirArchivoService,
     public _usuarioService:UsuarioService
   ) {
-
     this.token=_usuarioService.token;
    }
 
@@ -35,12 +34,15 @@ export class HospitalService {
     );
   }
 
-  obtenerHospital(id:String){
+  obtenerHospital(id:string){
     let URL= URL_SERVICES+'hospital/' + id;
+    URL+='?token='+this.token;
     return this._http.get(URL).pipe(
-      map(resultado=> {
-           resultado;
-      })
+      map((resp:any)=> {    
+         console.log("resp " + resp.hospital);     
+         return resp.hospital
+      }
+     )
     );
   }
 
@@ -57,8 +59,7 @@ export class HospitalService {
 
   crearHosiptal(nombre:string){
     let URL= URL_SERVICES+'hospital';
-    URL+='?token='+this.token;
-    console.log(nombre);
+    URL+='?token='+this.token; 
     return this._http.post(URL,{ nombre }).pipe(
       map(resultado=> {         
            resultado;

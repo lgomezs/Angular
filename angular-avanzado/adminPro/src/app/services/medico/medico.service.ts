@@ -11,10 +11,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class MedicoService {
-
-  token:string;
-  medico:Medico;
-
+ 
   constructor(
     public _router: Router,
     public _http: HttpClient,
@@ -22,11 +19,10 @@ export class MedicoService {
     public _usuarioService:UsuarioService
   ) { 
 
-    this.token=_usuarioService.token;
   }
 
   cargarMedicos(desde: number = 0){
-    let URL= URL_SERVICES+'medicos?desde='+ desde;
+    let URL= URL_SERVICES+'medico?desde='+ desde;
     return this._http.get(URL).pipe(
       map((resultado:any)=>{
               return resultado
@@ -54,7 +50,7 @@ export class MedicoService {
 
   borrarMedico(id:String){
     let URL= URL_SERVICES+'medico/' + id;
-    URL+='?token='+this.token;
+    URL+='?token='+this._usuarioService.token;
     return this._http.delete(URL).pipe(
       map(resultado=> {
            swal('Medico borrado', 'El medico a sido eliminado correctamente', 'success');
@@ -65,7 +61,7 @@ export class MedicoService {
 
   crearMedico(nombre:string){
     let URL= URL_SERVICES+'medico';
-    URL+='?token='+this.token;    
+    URL+='?token='+this._usuarioService.token;    
     return this._http.post(URL,{ nombre }).pipe(
       map(resultado=> {         
            resultado;
@@ -81,7 +77,7 @@ export class MedicoService {
 
   actualizarMedico(medico:Medico){
     let URL= URL_SERVICES+'medico/' + medico._id;
-    URL+='?token='+this.token;
+    URL+='?token='+this._usuarioService.token;
 
     return this._http.put( URL, medico ).pipe(
       map( (resp: any) => {
@@ -92,8 +88,10 @@ export class MedicoService {
   }
 
 
-  guardarMedico( medico: Medico ) {
-    let url = URL_SERVICES + '/medico';
+  guardarMedico(medico:any) {
+    let url = URL_SERVICES + 'medico';
+   
+    console.log("guardarmedico : "+ medico);
 
     if ( medico._id ) {
       // actualizando
