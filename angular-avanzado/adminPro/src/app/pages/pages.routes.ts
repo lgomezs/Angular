@@ -13,13 +13,18 @@ import { HospitalesComponent } from './hospitales/hospitales.component';
 import { MedicosComponent } from './medicos/medicos.component';
 import { MedicoComponent } from './medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
+import { VerificaTokenGuard } from '../services/guards/verifica-token.guard';
 
 const appRoutes:Routes = [
     { path:'', 
         component: PagesComponent,
         canActivate:[LoginGuard],
         children : [
-            { path:'dashboard', component: DashboardComponent,data:{titulo: 'dashboard'}},  
+            {   path:'dashboard', 
+                component:  DashboardComponent,
+                data:{titulo: 'dashboard'},
+                canActivate: [VerificaTokenGuard]
+            },  
             { path:'progress', component: ProgressComponent, data:{titulo: 'progress'}},   
             { path:'graficas', component: GraficasComponent,data:{titulo: 'grafica'}} ,
             { path:'accountSetting', component: AccoutSettingComponent,data:{titulo: 'Account Service'}}  ,
@@ -27,10 +32,10 @@ const appRoutes:Routes = [
             { path:'perfil', component: ProfileComponent,data:{titulo: 'Perfil de usuario'}} ,
             { path:'busqueda/:termino', component: BusquedaComponent,data:{titulo: 'busqueda'}} ,
               // Mantenimientos
-            { path: 'usuarios', component: UsuarioComponent, data: { titulo: 'Mantenimiento de Usuarios' } },
-            { path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Mantenimiento de Hospitales' } },
-            { path: 'medicos', component: MedicosComponent, data: { titulo: 'Mantenimiento de Medicos' } },
-            { path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Actualizacion de Medico' } },
+            { path: 'usuarios', component: UsuarioComponent, canActivate: [VerificaTokenGuard], data: { titulo: 'Mantenimiento de Usuarios' } },
+            { path: 'hospitales', component: HospitalesComponent, canActivate: [VerificaTokenGuard],data: { titulo: 'Mantenimiento de Hospitales' } },
+            { path: 'medicos', component: MedicosComponent, canActivate: [VerificaTokenGuard], data: { titulo: 'Mantenimiento de Medicos' } },
+            { path: 'medico/:id', component: MedicoComponent,canActivate: [VerificaTokenGuard], data: { titulo: 'Actualizacion de Medico' } },
             { path: '', redirectTo: '/dashboard', pathMatch: 'full' }            
         ]    
     }   

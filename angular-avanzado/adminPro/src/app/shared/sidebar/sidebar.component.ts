@@ -11,10 +11,12 @@ export class SidebarComponent implements OnInit {
 
   public usuario:Usuario;
 
-  constructor(private _siteBarService: SidebarService,public _usuarioService:UsuarioService) { }
+  constructor(public  _siteBarService: SidebarService,public _usuarioService:UsuarioService) { }
 
   ngOnInit() {
     this.usuario=this._usuarioService.usuario;
+    this._siteBarService.cargarMenu();
+    
   }
 
 

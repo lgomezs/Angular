@@ -29,7 +29,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Backend - Server
 
-El backend de esta aplicacion se puede descargar del siguiente repositorio:
+El backend de esta aplicacion se puede descargar del siguiente repositorio GitHub:
 
+https://github.com/lgomezs/nodejs-backendServer-adminPro
+    
     git clone https://github.com/lgomezs/nodejs-backendServer-adminPro
 
+    Iniciar la aplicacion con el comando: npm start
+
+## Generate build 
+
+ ng build --prod --build-optimizer

@@ -3,9 +3,12 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 import { URL_SERVICES } from '../../config/config';
-import { map } from 'rxjs/operators';
+import { map ,catchError} from 'rxjs/operators';
 import { Hospital } from '../../models/hospital';
 import { UsuarioService } from '../usuario/usuario.service';
+
+
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +33,10 @@ export class HospitalService {
       map((resultado:any)=>{
               return resultado
           }
-        )
+        ),
+        catchError( (err) => {        
+          return Observable.throw( err );
+        }) 
     );
   }
 
@@ -42,7 +48,10 @@ export class HospitalService {
          console.log("resp " + resp.hospital);     
          return resp.hospital
       }
-     )
+     ),
+     catchError( (err) => {        
+      return Observable.throw( err );
+    }) 
     );
   }
 
@@ -53,7 +62,10 @@ export class HospitalService {
       map(resultado=> {
            swal('Hospital borrado', 'El hospital a sido eliminado correctamente', 'success');
            return true;
-      })
+      }),
+      catchError( (err) => {        
+        return Observable.throw( err );
+      }) 
     );
   }
 
@@ -63,7 +75,10 @@ export class HospitalService {
     return this._http.post(URL,{ nombre }).pipe(
       map(resultado=> {         
            resultado;
-      })
+      }),
+      catchError( (err) => {        
+        return Observable.throw( err );
+      }) 
     );
   }
 
@@ -81,7 +96,10 @@ export class HospitalService {
       map( (resp: any) => {
         swal('Hospital actualizado', hospital.nombre, 'success' );
         return true;
-      })
+      }),
+      catchError( (err) => {        
+        return Observable.throw( err );
+      }) 
     );
   }
 

@@ -35,7 +35,8 @@ export class MedicosComponent implements OnInit {
     this.cargando=true;
     this._medicoServuce.cargarMedicos()
       .subscribe((resul:any)=>{
-        this.totalRegistros=resul.total;
+        console.log(resul);
+        this.totalRegistros=resul.cantidad;
         this.medicos=resul.medicos;
         this.cargando=false;
       });

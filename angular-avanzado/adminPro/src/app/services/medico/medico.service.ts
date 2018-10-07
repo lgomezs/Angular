@@ -5,7 +5,9 @@ import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 import { URL_SERVICES } from '../../config/config';
 import { UsuarioService } from '../usuario/usuario.service';
 import { Medico } from '../../models/Medico';
-import { map } from 'rxjs/operators';
+import { map,catchError } from 'rxjs/operators';
+
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +29,10 @@ export class MedicoService {
       map((resultado:any)=>{
               return resultado
           }
-        )
+        ),
+        catchError( (err) => {        
+          return Observable.throw( err );
+        }) 
     );
   }
 
@@ -44,7 +49,10 @@ export class MedicoService {
     return this._http.get(URL).pipe(
       map(resultado=> {
            resultado;
-      })
+      }),
+      catchError( (err) => {        
+        return Observable.throw( err );
+      }) 
     );
   }
 
@@ -55,7 +63,10 @@ export class MedicoService {
       map(resultado=> {
            swal('Medico borrado', 'El medico a sido eliminado correctamente', 'success');
            return true;
-      })
+      }),
+      catchError( (err) => {        
+        return Observable.throw( err );
+      }) 
     );
   }
 
@@ -65,7 +76,10 @@ export class MedicoService {
     return this._http.post(URL,{ nombre }).pipe(
       map(resultado=> {         
            resultado;
-      })
+      }),
+      catchError( (err) => {        
+        return Observable.throw( err );
+      }) 
     );
   }
 
@@ -83,7 +97,10 @@ export class MedicoService {
       map( (resp: any) => {
         swal('Medico actualizado', medico.nombre, 'success' );
         return true;
-      })
+      }),
+      catchError( (err) => {        
+        return Observable.throw( err );
+      }) 
     );
   }
 
@@ -91,8 +108,6 @@ export class MedicoService {
   guardarMedico(medico:any) {
     let url = URL_SERVICES + 'medico';
    
-    console.log("guardarmedico : "+ medico);
-
     if ( medico._id ) {
       // actualizando
       url += '/' + medico._id;
@@ -102,7 +117,11 @@ export class MedicoService {
                 map( (resp: any) => {
                   swal('Médico Actualizado', medico.nombre, 'success');
                   return resp.medico;
-                }));
+                }),
+                catchError( (err) => {        
+                  return Observable.throw( err );
+                }) 
+              );
 
     }else {
       // creando
@@ -111,9 +130,12 @@ export class MedicoService {
               map( (resp: any) => {
                 swal('Médico Creado', medico.nombre, 'success');
                 return resp.medico;
-              }));
+              }),
+              catchError( (err) => {        
+                return Observable.throw( err );
+              }) 
+            );
+            
     }
-
   }
-
 }
